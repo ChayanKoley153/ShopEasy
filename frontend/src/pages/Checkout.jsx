@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
 import { useNavigate } from "react-router";
+import { FaPhoneAlt } from "react-icons/fa";
+
+
+
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -28,7 +32,7 @@ export default function Checkout() {
     0
   );
 
-  // ✅ PLACE ORDER + CLEAR CART
+  // PLACE ORDER + CLEAR CART
   const placeOrder = async () => {
     if (!selectedAddress) {
       alert("Please select address");
@@ -67,7 +71,10 @@ export default function Checkout() {
             <p className="text-sm">
               {addr.addressLine}, {addr.city}, {addr.state} - {addr.pincode}
             </p>
-            <p className="text-sm">📞 {addr.phone}</p>
+            <p className="text-sm flex items-center gap-2 text-gray-600">
+              <FaPhoneAlt className="text-gray-500 text-xs" />
+              <span>{addr.phone}</span>
+            </p>
           </label>
         ))}
       </div>
